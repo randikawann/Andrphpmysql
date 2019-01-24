@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.setMessage("Registering user...");
         progressDialog.show();
 
-        Log.i("1234","progres dialog run");
+//        Log.i("1234","progres dialog run");
 
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.i("1234","1");
+//                        Log.i("1234","1");
 
                         progressDialog.dismiss();
 
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.i("1234","2");
+//                        Log.i("1234","2");
 
                         progressDialog.hide();
                         Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Log.i("1234","3");
+//                Log.i("1234","3");
                 Map<String, String> params = new HashMap<>();
                 params.put("username",username);
                 params.put("password",password);
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 return params;
             }
         };
-        Log.i("1234","4");
+//        Log.i("1234","4");
 
         //no need request queue because RequestHandler class use.
         // requestqueue has master branch project
