@@ -1,12 +1,14 @@
 package com.xiteb.randikawann.androidphpmysql;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText etuserNmae, etpassword, etemail;
     private Button btreg;
+    private TextView tvsignto;
+
     ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         etuserNmae = findViewById(R.id.etuserNmae);
         etemail = findViewById(R.id.etemail);
         etpassword = findViewById(R.id.etpassword);
+        tvsignto = findViewById(R.id.tvsignto);
 
         progressDialog = new ProgressDialog(this);
         btreg = findViewById(R.id.btreg);
@@ -45,6 +50,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 registerUser();
 
+            }
+        });
+
+        tvsignto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent tologin = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(tologin);
             }
         });
     }
@@ -100,8 +113,13 @@ public class MainActivity extends AppCompatActivity {
         };
         Log.i("1234","4");
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
+        //no need request queue because RequestHandler class use.
+        // requestqueue has master branch project
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
+//        requestQueue.add(stringRequest);
+
+
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
 
 
     }

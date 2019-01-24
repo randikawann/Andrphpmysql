@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
     <LinearLayout
         android:id="@+id/linearL1"
@@ -15,42 +14,36 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/etuserNmae"
+            android:id="@+id/etsignuserNmae"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:hint="UserName"/>
 
         <EditText
-            android:id="@+id/etpassword"
+            android:id="@+id/etsignpassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:hint="Password"/>
 
 
-        <EditText
-            android:id="@+id/etemail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:hint="emal"/>
 
 
         <Button
-            android:id="@+id/btreg"
+            android:id="@+id/btsignIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Register user"
+            android:text="Login"
             />
 
     </LinearLayout>
     <TextView
-        android:id="@+id/tvsignto"
+        android:id="@+id/tvregto"
         android:textAlignment="center"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/linearL1"
-        android:text="Already registered? \n click hear to login"
+        android:text=""
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
