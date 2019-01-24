@@ -3,6 +3,7 @@ package com.xiteb.randikawann.androidphpmysql;
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -56,12 +57,15 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.setMessage("Registering user...");
         progressDialog.show();
 
+        Log.i("1234","progres dialog run");
+
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
                 Constants.URL_REGISTER,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        Log.i("1234","1");
 
                         progressDialog.dismiss();
 
@@ -78,14 +82,15 @@ public class MainActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        Log.i("1234","2");
 
                         progressDialog.hide();
                         Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
                     }
-                }
-        ){
+                }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
+                Log.i("1234","3");
                 Map<String, String> params = new HashMap<>();
                 params.put("username",username);
                 params.put("password",password);
@@ -93,8 +98,10 @@ public class MainActivity extends AppCompatActivity {
                 return params;
             }
         };
+        Log.i("1234","4");
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
 
 
     }
