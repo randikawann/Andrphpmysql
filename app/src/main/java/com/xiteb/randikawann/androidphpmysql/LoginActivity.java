@@ -1,6 +1,7 @@
 package com.xiteb.randikawann.androidphpmysql;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -27,13 +29,29 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etsignuserNmae, etsignpassword;
     private Button btsignIn;
     private ProgressDialog progressDialog;
+    private TextView tvregto;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        if(SharedPreManager.getInstance(this).isLoggedIn()){
+            finish();
+            startActivity(new Intent(this, ProfileActivity.class));
+            return;
+        }
+
         etsignuserNmae = findViewById(R.id.etsignuserNmae);
         etsignpassword = findViewById(R.id.etsignpassword);
+        tvregto = findViewById(R.id.tvregto);
+
+
+        tvregto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            }
+        });
 
         btsignIn = findViewById(R.id.btsignIn);
         progressDialog = new ProgressDialog(this);
@@ -74,7 +92,10 @@ public class LoginActivity extends AppCompatActivity {
                                                 jsonObject.getString("email")
 
                                         );
-                                Toast.makeText(LoginActivity.this, "User Loging Successful",Toast.LENGTH_SHORT).show();
+
+
+                                startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+
                             }else{
 //                                Log.i("12345","6");
 

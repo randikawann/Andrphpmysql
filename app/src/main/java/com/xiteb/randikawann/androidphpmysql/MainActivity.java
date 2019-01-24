@@ -37,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if(SharedPreManager.getInstance(this).isLoggedIn()){
+            finish();
+            startActivity(new Intent(this, ProfileActivity.class));
+            return;
+        }
+
         etuserNmae = findViewById(R.id.etuserNmae);
         etemail = findViewById(R.id.etemail);
         etpassword = findViewById(R.id.etpassword);
